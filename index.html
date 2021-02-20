@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pangram</title>
+</head>
+
+<body>
+    <script>
+        function pangram() {
+            const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            let enter = prompt("Enter string");
+            if (enter == null || enter.trim() == "") {
+                alert("You click cancel or not entered value");
+                pangram();
+            }
+            else {
+                let chnageCase = enter.toLowerCase();
+                let res = chnageCase.split(" ").join("").split("'").join("").split(",").join("").split(".").join("").split("(").join("").split(")").join("").split("-").join("").split("");
+                let sortarray = res.sort();
+                sortarray = sortarray.filter((current, index, arr) => {
+                    return arr.indexOf(current) == index;
+                });
+                let i = 0;
+                for (const iterator of alphabet) {
+                    if(iterator == sortarray[i])
+                    {
+                        i++;
+                    }
+                }
+                if(i == alphabet.length)
+                {
+                    alert("The String is a Pangram");
+                }
+                else{
+                    alert("The String is not a Pangram");
+                }
+
+            }
+
+        }
+        pangram();
+    </script>
+</body>
+
+</html>
